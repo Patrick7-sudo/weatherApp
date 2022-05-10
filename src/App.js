@@ -1,11 +1,18 @@
-// for frontpage extentsion
-import logo from "./logoweather.png"
-// End of frontpage extension
+import {Route,Routes, BrowserRouter} from 'react-router-dom';
 import {useState,useEffect} from 'react';
-import style from "./App.module.css"
+import style from "./App.module.css";
+import Frontpage from './frontpage/frontpage.js';
+import MainPage from './mainPage/mainpage.js';
+
 function App() {
   // general app function for parent
   const [heightDynamic,setHeightDynamic]=useState("");
+  const [widthDynamic,setWidthDynamic]=useState("");
+  const [userInput, setUserInput] = useState("");
+  
+  const updateInput = (state) =>{
+    setUserInput(state);
+  }
 
   useEffect(()=>{
     function heightChange(){
@@ -14,40 +21,32 @@ function App() {
     window.addEventListener("resize",heightChange);
     heightChange();
   },[heightDynamic])
-  console.log(heightDynamic)
-  // first page function
-  const [userInput, setUserInput] =useState("");
-  // end of first page function 
-  console.log(userInput)
-  return (
-    <div className={style.App} style={{ height: `${heightDynamic}px` }}>
-      {/* this is 1st page */}
-      <div className={style.frontPageMainContainer}>
-        
-          <div className={style.logoContainer}>
-            <img src={logo} alt="logo" className={style.logoItSelf}/>
-          </div>
-          <div className={style.userInput}>
-            <input
-              type="text"
-              placeholder="enter your location"
-              value={userInput}
-              onChange={(e) => {
-                setUserInput(e.target.value);
-              }}
-              className={style.inputUserInput}
-            />
 
-            <button className={style.buttonUserInput}>Enter</button>
-          </div>
-          <div className={style.wave}>
-            <div className={style.waveContain}></div>
-          </div>
-        
-      </div>
-      {/* This is the end of 1st page */}
-    </div>
-  );
+   useEffect(() => {
+     function widthChange() {
+       setWidthDynamic(window.innerWidth);
+     }
+     window.addEventListener("resize", widthChange);
+     widthChange();
+   }, [widthDynamic]);
+  
+   return (
+     <div className={style.App}>
+       <BrowserRouter>
+         <Routes>
+           <Route
+             path="/"
+             element={
+               <Frontpage userInput={userInput} updateInput={updateInput} />
+             }
+           ></Route>
+
+           <Route path="/mainPage" element={<MainPage />}></Route>
+         </Routes>
+       </BrowserRouter>
+     </div>
+   );
+  
 }
 
 export default App;

@@ -1,0 +1,277 @@
+:root{
+    --fs-xl: 1rem;
+    --fs-800:1rem;
+    --fs-600: 2rem;
+    --fs-400:1rem;
+}
+
+@media screen and (min-width:1500px){
+    :root{
+    --fs-xl: 160px;
+    --fs-800:128px;
+    --fs-600: 32px;
+    --fs-400:32px;
+}
+}
+@media  screen and (max-width:1500px){
+    :root{
+    --fs-xl: 80px;
+    --fs-800:64px;
+    --fs-600: 28.8px;
+    --fs-400:28.8px;
+}
+}
+@media  screen and (max-width:900px){
+    :root{
+    --fs-xl: 64px;
+    --fs-800:48px;
+    --fs-600: 28.8px;
+    --fs-400:28.8px;
+}
+}
+@media  screen and (max-width:800px){
+    :root{
+    --fs-xl: 48px;
+    --fs-800:32px;
+    --fs-600: 20.8px;
+    --fs-400:20.8px;
+}
+}
+@media  screen and (max-width:500px){
+    :root{
+    --fs-xl: 32px;
+    --fs-800:27.2px;
+    --fs-600: 16px;
+    --fs-400:16px;
+}
+}
+@media  screen and (max-width:400px){
+    :root{
+    --fs-xl: 28.8px;
+    --fs-800:16px;
+    --fs-600: 9.6px;
+    --fs-400:9.6px;
+}
+}
+.todayDisplayContainer img{
+    max-width:100%;
+    height: 100%;
+    width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+}
+.mainFrame{
+background: linear-gradient(180deg, #FFFFFF 0%, #8BA9F4 100%);    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+/* today Display */
+.todayDisplayContainer{
+    /* background-color: pink; */
+    width:90%;
+    height: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   
+   
+}
+.todayDisplayMain{
+    background-color: aquamarine;
+    width:100%;
+    height: 99%;
+    border-radius:50px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.todayInfo{
+    background-color: rgba(255,255,255,0.8);
+    width:60%;
+    height: 50%;
+    position:absolute;
+    top:40%;
+    left:35%;
+    border:4px solid #8BA9F4;
+    border-radius: 25px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+}
+.todayInfoLocation{
+    /* background-color: aqua; */
+    
+    text-align: center;
+    width:95%;
+    height:20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: var(--fs-600);
+
+}
+.todayInfoweatherNData{
+    /* background-color: aquamarine; */
+    margin:5px;
+    width:95%;
+    height:80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.todayInfoTemp{
+    /* background-color: pink; */
+    width:50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: var(--fs-xl);
+}
+.todayInfoTemp p{
+    margin:0px;
+}
+.todayInfoOther{
+    /* background-color: blueviolet; */
+    width:50%;
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    flex-direction: column;
+    margin-bottom:.5rem;
+}
+.todayInfoOther p{
+    margin:0px;
+}
+.todayInfoCondition{
+    font-size: var(--fs-800);
+    text-transform: uppercase;
+}
+.todayInfoDay{
+    font-size: var(--fs-400);
+    text-transform: capitalize;
+}
+.todayInfoDate{
+    font-size:var(--fs-400);
+}
+/* end of today Display */
+.allWeekWeatherContainer{
+    background-color: orange;
+    width:90%;
+    height: 40%;
+}
+/* start of return container */
+.returnContainer{
+    /* background-color: yellow; */
+    width:90%;
+    height:8%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.buttonReturn{
+    width:50%;
+    height:70%;
+    background-color: #8BA9F4;
+    border:2px solid white;
+    
+}
+
+.buttonReturn a{
+    text-decoration: none;
+    color:white;
+    font-size:23px;
+    transition: 1s;
+}
+.buttonReturn:hover{
+    transition: 1s;
+    box-shadow: 0px 3px 11px 2px whitesmoke;
+}
+.buttonReturn:active{
+    transition: 0.2s;
+    transform: translateY(3px);
+}
+
+
+/* end of return container */
+h1{
+    margin:0px;
+}
+@media screen and (min-width:800px){
+    .todayDisplayContainer{
+    /* background-color: yellow; */
+        width:90%;
+        height: 60%;
+        margin-top:.5rem;
+
+    }
+
+    .allWeekWeatherContainer{
+    background-color: orange;
+    width:90%;
+    height: 20%;
+    }
+
+    .buttonReturn a{
+        font-size:34px;
+    }
+}
+@media screen and (max-width:700px){
+    /* .todayInfoLocation{
+        font-size:16px;
+        /* background-color: pink; 
+    } 
+     .todayInfoTemp{
+        font-size: 42px;
+    } */
+    /* .todayInfoCondition{
+    font-size: 32px;
+    text-transform: uppercase;
+    } */
+    /* .todayInfoDay{
+        font-size: 18px;
+        text-transform: capitalize;
+    }
+    .todayInfoDate{
+        font-size:18px;
+    } */
+}
+@media screen and (max-width:600px){
+    /* .todayInfoLocation{
+        font-size:16px;
+        background-color: pink;
+    } */
+    /* .todayInfoTemp{
+        font-size: 32px;
+    } */
+}
+
+@media screen and (max-width:400px){
+    /* .todayInfoLocation{
+        font-size:12px;
+        background-color: pink;
+    } */
+    /* .todayInfoTemp{
+        font-size: 24px;
+    } */
+    /* .todayInfoCondition{
+    font-size: 18px;
+    text-transform: uppercase;
+    } */
+    /* .todayInfoDay{
+        font-size: 13px;
+        text-transform: capitalize;
+    }
+    .todayInfoDate{
+        font-size:13px;
+    } */
+}

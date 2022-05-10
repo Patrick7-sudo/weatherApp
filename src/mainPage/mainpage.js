@@ -1,11 +1,12 @@
 import style from './mainPage.module.css'
 import {useState,useEffect} from 'react'
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 function MainPage(){
     const [heightDynamic, setHeightDynamic] = useState("");
     const [widthDynamic, setWidthDynamic] = useState("");
-    const [pictureHolder,setPictureHolder]= useState("")
+    const [pictureHolder,setPictureHolder]= useState("");
 
+     const navigate = useNavigate();
 
      useEffect(() => {
        function heightChange() {
@@ -23,7 +24,9 @@ function MainPage(){
        widthChange();
      }, [widthDynamic]);
 
-    
+    function returnToMainPage(){
+        navigate("/");
+    }
 
      
 
@@ -70,8 +73,8 @@ function MainPage(){
           <h1>all weather </h1>
         </div>
         <div className={style.returnContainer}>
-          <button className={style.buttonReturn}>
-            <Link to="/">Return</Link>
+          <button onClick={()=>{returnToMainPage()}}className={style.buttonReturn}>
+            Return
           </button>
         </div>
       </div>

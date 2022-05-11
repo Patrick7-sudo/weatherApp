@@ -4,11 +4,14 @@ import style from "./App.module.css";
 import Frontpage from './frontpage/frontpage.js';
 import MainPage from './mainPage/mainpage.js';
 
+const dataKey = process.env.REACT_APP_WEATHER_API_KEY;
+
 function App() {
   // general app function for parent
   const [heightDynamic,setHeightDynamic]=useState("");
   const [widthDynamic,setWidthDynamic]=useState("");
   const [userInput, setUserInput] = useState("");
+  const [fullWeatherData,setFullWeatherData]=useState(null);
   
   const updateInput = (state) =>{
     setUserInput(state);
@@ -29,6 +32,19 @@ function App() {
      window.addEventListener("resize", widthChange);
      widthChange();
    }, [widthDynamic]);
+
+   useEffect(() => {
+     const dataURL = `http://api.weatherapi.com/v1/forecast.json?key=${dataKey}&q=London&days=4&aqi=no&alerts=no
+
+`;
+     async function weatherData() {
+      const response = await fetch(`${dataURL}`)
+      const data = await response.json();
+      console.log(data)
+     }
+     
+     weatherData()
+   }, []);
   
    return (
      <div className={style.App}>
@@ -41,7 +57,10 @@ function App() {
              }
            ></Route>
 
-           <Route path="/mainPage" element={<MainPage />}></Route>
+           <Route
+             path="/mainPage"
+             element={<MainPage userInput={userInput} />}
+           ></Route>
          </Routes>
        </BrowserRouter>
      </div>

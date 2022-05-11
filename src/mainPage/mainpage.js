@@ -83,13 +83,21 @@ const ToggleItem =(({input})=>{
 // end of dynamic toggling function
 
 
-function MainPage(){
+function MainPage({userInput}){
     const [heightDynamic, setHeightDynamic] = useState("");
     const [widthDynamic, setWidthDynamic] = useState("");
-    const [pictureHolder,setPictureHolder]= useState(logo);
-    const dataDummy =[11,2,3,4,5,6,7]
+    const [pictureHolder,setPictureHolder] = useState(logo);
+    const [show,setShow] = useState(false);
+    const Location = userInput;
+    const dataDummy = [11, 2, 3, 4, 5, 6, 7];
 
-     const navigate = useNavigate();
+    const navigate = useNavigate();
+
+   
+   
+    
+
+   
 
      useEffect(() => {
        function heightChange() {
@@ -114,7 +122,8 @@ function MainPage(){
      
 
      useEffect(()=>{
-          const imageURL = `https://api.unsplash.com/search/photos?query=italy&client_id=${MY_KEY}`;
+          const imageURL = `https://api.unsplash.com/search/photos?query=slovenia&client_id=${MY_KEY}`;
+
          async function fetchImageAPI() {
            const response = await fetch(`${imageURL}`);
            const data = await response.json();
@@ -122,7 +131,29 @@ function MainPage(){
            setPictureHolder(data.results[0].urls.raw);
          }
          fetchImageAPI()
-     },[pictureHolder])
+     },[pictureHolder,Location])
+
+      async function loadApp() {
+        const promise = new Promise((resolve, reject) => {
+          setTimeout(() => {
+            setShow(true);
+            resolve();
+          }, 1000);
+        });
+        await promise;
+      }
+
+      useEffect(() => {
+        loadApp();
+      }, []);
+
+      if (!show) {
+        return (
+          <div className={style.loadingContainer}>
+            <h2>Loading....</h2>
+          </div>
+        );
+      }
 
      
     return (
@@ -130,7 +161,9 @@ function MainPage(){
         className={style.mainFrame}
         style={{ minHeight: `${heightDynamic}px`, width: `${widthDynamic}px` }}
       >
+        
         {/*today main display with picture  */}
+        {show && (<div className={style.mainFrame}>
         <div className={style.todayDisplayContainer}>
           <div className={style.todayDisplayMain}>
             <img src={pictureHolder} alt="city selected" height="60px" />
@@ -154,8 +187,10 @@ function MainPage(){
             </div>
           </div>
         </div>
+        
         {/* end today main display with picture  */}
         {/*individual weather tiles  */}
+        
         <div className={style.allWeekWeatherContainer}>
           {dataDummy.map((input) => {
             // console.log(input)
@@ -176,6 +211,7 @@ function MainPage(){
           </button>
         </div>
         {/*end return button  */}
+        </div>)}
       </div>
     );
 }

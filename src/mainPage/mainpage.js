@@ -4,7 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import cloud from '../cloud.png';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus } from "@fortawesome/free-solid-svg-icons";
+import logo from "../logoweather.png"
 
+const MY_KEY = process.env.REACT_APP_IMAGE_KEY;
 // dynamic toggling function
 
 const ToggleItem =(({input})=>{
@@ -84,7 +86,7 @@ const ToggleItem =(({input})=>{
 function MainPage(){
     const [heightDynamic, setHeightDynamic] = useState("");
     const [widthDynamic, setWidthDynamic] = useState("");
-    const [pictureHolder,setPictureHolder]= useState("");
+    const [pictureHolder,setPictureHolder]= useState(logo);
     const dataDummy =[11,2,3,4,5,6,7]
 
      const navigate = useNavigate();
@@ -112,7 +114,7 @@ function MainPage(){
      
 
      useEffect(()=>{
-          const imageURL = `https://api.unsplash.com/search/photos?query=kuala lumpur&client_id=W8eufYA5_Eqz0VfH7mFvhgFCRUv88AuhShK4lttkZAs`;
+          const imageURL = `https://api.unsplash.com/search/photos?query=italy&client_id=${MY_KEY}`;
          async function fetchImageAPI() {
            const response = await fetch(`${imageURL}`);
            const data = await response.json();
@@ -122,8 +124,7 @@ function MainPage(){
          fetchImageAPI()
      },[])
 
-   
-
+     
     return (
       <div
         className={style.mainFrame}
@@ -132,7 +133,7 @@ function MainPage(){
         {/*today main display with picture  */}
         <div className={style.todayDisplayContainer}>
           <div className={style.todayDisplayMain}>
-            <img src={pictureHolder} alt="city selected" />
+            <img src={pictureHolder} alt="city selected" height="60px" />
             <div className={style.todayInfo}>
               <div className={style.todayInfoLocation}>
                 <p>Kuala Lumpur, Malaysia</p>
@@ -156,12 +157,10 @@ function MainPage(){
         {/* end today main display with picture  */}
         {/*individual weather tiles  */}
         <div className={style.allWeekWeatherContainer}>
-            {dataDummy.map((input)=>{
-                console.log(input)
-                return <ToggleItem input={input}/>
-            })}
-
-          
+          {dataDummy.map((input) => {
+            // console.log(input)
+            return <ToggleItem input={input} />;
+          })}
         </div>
         {/*end individual weather tiles  */}
 

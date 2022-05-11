@@ -11,7 +11,7 @@ function App() {
   const [heightDynamic,setHeightDynamic]=useState("");
   const [widthDynamic,setWidthDynamic]=useState("");
   const [userInput, setUserInput] = useState("");
-  const [fullWeatherData,setFullWeatherData]=useState(null);
+  // const [fullWeatherData,setFullWeatherData]=useState(null);
   
   const updateInput = (state) =>{
     setUserInput(state);

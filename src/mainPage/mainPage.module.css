@@ -3,8 +3,8 @@
     --fs-800:1rem;
     --fs-600: 2rem;
     --fs-400:1rem;
-    --fs-300:24px;
-    --fs-200:18px;
+    --fs-300:10px;
+    --fs-200:9px;
 }
 
 @media screen and (min-width:1500px){
@@ -54,7 +54,7 @@
     --fs-600: 16px;
     --fs-400:16px;
     --fs-300:20px;
-    --fs-200:13px;
+    --fs-200:14px;
 }
 }
 @media  screen and (max-width:400px){
@@ -63,8 +63,8 @@
     --fs-800:16px;
     --fs-600: 9.6px;
     --fs-400:9.6px;
-    --fs-300:20px;
-    --fs-200:14px;
+    --fs-300:16px;
+    --fs-200:12px;
 }
 }
 .todayDisplayContainer img{
@@ -225,6 +225,7 @@ background: linear-gradient(180deg, #FFFFFF 0%, #8BA9F4 100%);    display: flex;
 	transition: all .25s ease;
     visibility: visible;
     overflow: hidden;
+    font-size: var(--fs-200);
 }
 .displayShow{
     visibility: visible;
@@ -279,7 +280,7 @@ background: linear-gradient(180deg, #FFFFFF 0%, #8BA9F4 100%);    display: flex;
     /* background-color: pink; */
     margin: 2px;
     padding:2px;
-    font-size: medium; 
+    font-size: var(--fs-200); 
 }
 .moreInfoLogoContainerIndividual{
     /* background-color: orange; */
@@ -355,7 +356,8 @@ h1{
 .hiddingThings{
     visibility: hidden;
     height: 0;
-    transition: 1s;
+    transition: 0.25s;
+    color: #FFFFFF;
 }
 
 @media screen and (min-width:800px){

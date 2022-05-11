@@ -45,7 +45,9 @@ function Frontpage( {userInput,updateInput}) {
   // end of first page function
 
   return (
-    <div className={style.frontPage} style={{ height: `${heightDynamic}px` }}>
+    <div className={style.frontPage} 
+    style={{ height: `${heightDynamic}px` }}
+    >
       {/* this is 1st page */}
       <div
         className={style.frontPageMainContainer}

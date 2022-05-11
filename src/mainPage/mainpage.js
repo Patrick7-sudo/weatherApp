@@ -122,7 +122,7 @@ function MainPage(){
            setPictureHolder(data.results[0].urls.raw);
          }
          fetchImageAPI()
-     },[])
+     },[pictureHolder])
 
      
     return (

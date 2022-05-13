@@ -162,7 +162,7 @@ function App() {
     var evTypep = window.performance.getEntriesByType("navigation")[0].type;
     if (evTypep === "reload") {
       window.location.replace(
-        "https://weather838.netlify.app/mainPage"
+        "https://weather838.netlify.app"
       );
     }
   }

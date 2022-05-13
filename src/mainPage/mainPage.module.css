@@ -5,6 +5,7 @@
     --fs-400:1rem;
     --fs-300:10px;
     --fs-200:9px;
+     --fs-50:9px;
 }
 
 @media screen and (min-width:1500px){
@@ -16,6 +17,7 @@
     --fs-300:42px;
     --fs-200:18px;
     --fs-100:16px;
+    --fs-50:16px;
 }
 }
 @media  screen and (max-width:1500px){
@@ -27,6 +29,7 @@
     --fs-300:32px;
     --fs-200:14px;
     --fs-100:14px;
+    --fs-50:14px;
 }
 }
 @media  screen and (max-width:900px){
@@ -38,6 +41,7 @@
     --fs-300:26px;
     --fs-200:12px;
     --fs-100:12px;
+    --fs-50:12px;
 }
 }
 @media  screen and (max-width:800px){
@@ -49,6 +53,7 @@
     --fs-300:22px;
     --fs-200:18px;
     --fs-100:10px;
+    --fs-50:12px;
 }
 }
 @media  screen and (max-width:500px){
@@ -59,18 +64,20 @@
     --fs-400:16px;
     --fs-300:20px;
     --fs-200:14px;
-    --fs-100:8px;
+    --fs-100:10px;
+    --fs-50:10px;
 }
 }
 @media  screen and (max-width:400px){
     :root{
-    --fs-xl: 28.8px;
+    --fs-xl: 25px;
     --fs-800:10px;
     --fs-600: 9.6px;
     --fs-400:9.6px;
     --fs-300:16px;
     --fs-200:12px;
-    --fs-100:6px;
+    --fs-100:9px;
+    --fs-50:10px;
 }
 }
 /* loading */
@@ -262,7 +269,11 @@ background: linear-gradient(180deg, #FFFFFF 0%, #8BA9F4 100%);    display: flex;
 	transition: all .25s ease;
     visibility: visible;
     overflow: hidden;
-    font-size: var(--fs-200);
+    
+}
+.extraInfoWeatherMain p{
+    font-size: var(--fs-50);
+    /* color:pink; */
 }
 .displayShow{
     visibility: visible;
@@ -424,9 +435,10 @@ h1{
         font-size: large;
     }
 
-    .extraInfoWeatherMain p{
-        font-size: x-large;
-    }
+    /* .extraInfoWeatherMain p{
+        font-size: medium;
+        margin:5px;
+    } */
 
     /* .buttonReturn{
         font-size:34px;

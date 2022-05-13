@@ -77,9 +77,10 @@
     --fs-300:16px;
     --fs-200:12px;
     --fs-100:9px;
-    --fs-50:10px;
+    --fs-50:8px;
 }
 }
+
 /* loading */
 .loadingContainer{
     display: flex;

@@ -1,10 +1,10 @@
-import {Route,Routes, BrowserRouter} from 'react-router-dom';
+import {Route,Routes} from 'react-router-dom';
 import {useState,useEffect} from 'react';
 import style from "./App.module.css";
 import Frontpage from './frontpage/frontpage.js';
 import MainPage from './mainPage/mainpage.js';
 import logo from "./logoweather.png";
-import { useNavigate, useLocation} from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 
 
 const dataKey = process.env.REACT_APP_WEATHER_API_KEY;
@@ -21,7 +21,7 @@ function App() {
   const [clicked, setClicked] = useState(false);
 
   const navigate = useNavigate();
-  const location = useLocation();
+  
 
   // console.log(userInputFinal)
 
@@ -50,8 +50,6 @@ function App() {
   useEffect(() => {
     if (fullWeatherRawData === null || fullWeatherRawData === undefined) {
       setLetTrue(false);
-      console.log("useeffect false");
-      console.log(letTrue);
 
       setTimeout(() => {
         setLetTrue(true);
@@ -65,16 +63,9 @@ function App() {
       //end testing
     } else {
       setLetTrue(true);
-      console.log("useeffect true");
-      console.log(userInputFinal);
-      console.log(fullWeatherRawData);
       navigate("/mainPage");
-
-      // // testing
-      // setToggling(true);
-      // //end testing
     }
-  }, [fullWeatherRawData]);
+  }, [fullWeatherRawData, navigate]);
 
   function clickThrough() {
     updateClicked(true);
@@ -97,31 +88,33 @@ function App() {
     widthChange();
   }, [widthDynamic]);
 
-  useEffect(() => {
-    const dataURL = `http://api.weatherapi.com/v1/forecast.json?key=${dataKey}&q=${userInputFinal}&days=4&aqi=no&alerts=no`;
+   
+  
+   useEffect(() => {
+     async function weatherData() {
+       const dataURL = `http://api.weatherapi.com/v1/forecast.json?key=${dataKey}&q=${userInputFinal}&days=4&aqi=no&alerts=no`;
 
-    async function weatherData() {
-      try {
-        const response = await fetch(`${dataURL}`);
-        if (response.ok) {
-          const data = await response.json();
-          // console.log(response);
-          setFullWeatherRawData(data);
-        } else {
-          console.log("bitch move aside");
-          //  setUserInputFinal('nulle');
-          setFullWeatherRawData(null);
-          setToggling(true);
-        }
-      } catch (err) {
-        console.log("weather ApI problem");
-      }
-    }
-    if (clicked) {
-      weatherData();
-      setClicked(false);
-    }
-  }, [clicked, fullWeatherRawData]);
+       try {
+         const response = await fetch(`${dataURL}`);
+         if (response.ok) {
+           const data = await response.json();
+           // console.log(response);
+           setFullWeatherRawData(data);
+         } else {
+           console.log("bitch move aside");
+           //  setUserInputFinal('nulle');
+           setFullWeatherRawData(null);
+           setToggling(true);
+         }
+       } catch (err) {
+         console.log("weather ApI problem");
+       }
+     }
+     if (clicked) {
+       weatherData();
+       setClicked(false);
+     }
+   }, [clicked, fullWeatherRawData, userInputFinal]);
   //  console.log(fullWeatherRawData);
   useEffect(() => {
     const imageURL = `https://api.unsplash.com/search/photos?query=${userInputFinal}&client_id=${MY_KEY}`;
@@ -164,16 +157,17 @@ function App() {
   //   }
   // });
   
+  // /////////////////// change this address to redirect to you localhost when you refresh the page
   function checkEvt() {
     var evTypep = window.performance.getEntriesByType("navigation")[0].type;
-    if (evTypep == "reload") {
+    if (evTypep === "reload") {
       window.location.replace(
-        "http://localhost:3001"
+        "https://weather838.netlify.app/mainPage"
       );
     }
   }
   checkEvt();
-
+////////////////////////////////////////////////////////////////
 
   return (
     <div className={style.App}>

@@ -11,7 +11,7 @@
     :root{
     --fs-xl: 80px;
     --fs-800:30px;
-    --fs-600: 32px;
+    --fs-600: 30px;
     --fs-400:23px;
     --fs-300:42px;
     --fs-200:18px;
@@ -148,11 +148,15 @@ background: linear-gradient(180deg, #FFFFFF 0%, #8BA9F4 100%);    display: flex;
     overflow: scroll;
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
+    padding:8px;
 }
 .todayInfoLocation::-webkit-scrollbar {
   display: none;
 }
 
+.todayInfoLocation p {
+  margin:0px;
+}
 .todayInfoweatherNData{
     /* background-color: aquamarine; */
     margin:5px;

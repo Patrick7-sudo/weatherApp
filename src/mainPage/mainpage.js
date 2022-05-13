@@ -144,6 +144,7 @@ function MainPage({
   //    data to use
   useEffect(() => {
     // let fullWeatherData = fullWeatherRawData;
+    setFullWeatherData(fullWeatherData)
     setNameLocation(fullWeatherData.location.name);
     setNameCountry(fullWeatherData.location.country);
     setCurrentTemp(fullWeatherData.current.temp_c);
@@ -153,7 +154,7 @@ function MainPage({
     setForecastStuff(fullWeatherData.forecast.forecastday);
 
     dateConverter(rawDate);
-  }, [fullWeatherRawData, rawDate]);
+  }, [fullWeatherData, rawDate]);
 
   const [date, setDate] = useState([]);
   const dateDay = date[0];
@@ -295,7 +296,8 @@ function MainPage({
             <button
               onClick={() => {
                 returnToMainPage();
-                // updateInput("")
+                updateInput("")
+                updateFullWeatherRawData(null)
               }}
               className={style.buttonReturn}
             >

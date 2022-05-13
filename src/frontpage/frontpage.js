@@ -3,14 +3,56 @@ import logo from "../logoweather.png";
 // End of frontpage extension
 import { useState, useEffect } from "react";
 import style from "./frontpage.module.css";
-import {useNavigate} from "react-router-dom";
 
-function Frontpage( {userInput,updateInput}) {
+function InputStuff({
+  toggling,
+  togglingWork,
+  getUserInput,
+  userWork,
+  userInputFinal,
+  updateInput,
+  clickThrough
+}) {
+  return (
+    <input
+      type="text"
+      placeholder="enter your location"
+      value={userInputFinal}
+      onChange={(e) => {
+        updateInput(e.target.value);
+      }}
+      className={`${style.inputUserInput} ${
+        toggling ? style.errorMsg : style.removeErrorMsg
+      }`}
+      onKeyPress={(e) => {
+        if (e.key === "Enter") {
+          clickThrough();
+        }
+      }}
+      onTransitionEnd={() => togglingWork(false)}
+    />
+  );
+}
+
+function Frontpage({
+  
+  fullWeatherRawData,
+  updateFullWeatherRawData,
+  updateClicked,
+  userInputFinal,
+  updateInput,
+  working,
+  clickThrough,
+  // testing
+  letTrue,
+  toggling,
+  togglingWork
+}) {
   // general app function for parent
   const [heightDynamic, setHeightDynamic] = useState("");
   const [widthDynamic, setWidthDynamic] = useState("");
-
-  const navigate = useNavigate();
+  // const [userInput, setUserInput] = useState("");
+  // const navigate = useNavigate();
 
   useEffect(() => {
     function heightChange() {
@@ -29,25 +71,37 @@ function Frontpage( {userInput,updateInput}) {
   }, [widthDynamic]);
 
   // first page function
-  const [toggling, setToggling] = useState(false);
+  // const [toggling, setToggling] = useState(false);
+  // const togglingWork = (state) => {
+  //   setToggling(state);
+  // };
 
-  function getUserInput() {
-    if (userInput === "") {
-      console.log(`no value`);
-      setToggling(true);
-      console.log(toggling);
-    } else {
-      console.log("hello there");
-         navigate("/mainPage");
-    }
-  }
 
+//  function getUserInput() { 
+//     updateClicked(true);
+//     console.log('sam smith')
+
+//     if (userInputFinal === "") {
+//       console.log(`no value`);
+//       setToggling(true);
+//       // updateFullWeatherRawData(null);
+//     } else if (fullWeatherRawData === "") {
+//       console.log("data not here");
+//       console.log(userPlace);
+//     } else {
+//       console.log("hello there");
+//       navigate("/mainPage");
+//     } 
+//   }
+
+  // testing API calling
+ 
+  // end of testing API calling
+  
   // end of first page function
 
   return (
-    <div className={style.frontPage} 
-    style={{ height: `${heightDynamic}px` }}
-    >
+    <div className={style.frontPage} style={{ height: `${heightDynamic}px` }}>
       {/* this is 1st page */}
       <div
         className={style.frontPageMainContainer}
@@ -57,27 +111,18 @@ function Frontpage( {userInput,updateInput}) {
           <img src={logo} alt="logo" className={style.logoItSelf} />
         </div>
         <div className={style.userInput}>
-          <input
-            type="text"
-            placeholder="enter your location"
-            value={userInput}
-            onChange={(e) => {
-              updateInput(e.target.value);
-            }}
-            className={`${style.inputUserInput} ${
-              toggling ? style.errorMsg : style.removeErrorMsg
-            }`}
-            onKeyPress={(e) => {
-              if (e.key === "Enter") {
-                getUserInput();
-              }
-            }}
-            onTransitionEnd={() => setToggling(false)}
+          <InputStuff
+            // getUserInput={getUserInput}
+            toggling={toggling}
+            togglingWork={togglingWork}
+            userInputFinal={userInputFinal}
+            updateInput={updateInput}
+            clickThrough={clickThrough}
           />
 
           <button
             onClick={() => {
-              getUserInput();
+              clickThrough();
             }}
             className={`${style.buttonUserInput}`}
           >

@@ -9,62 +9,68 @@
 
 @media screen and (min-width:1500px){
     :root{
-    --fs-xl: 90px;
-    --fs-800:80px;
+    --fs-xl: 80px;
+    --fs-800:30px;
     --fs-600: 32px;
     --fs-400:23px;
     --fs-300:42px;
     --fs-200:18px;
+    --fs-100:16px;
 }
 }
 @media  screen and (max-width:1500px){
     :root{
     --fs-xl: 58px;
-    --fs-800:50px;
+    --fs-800:28.8px;
     --fs-600: 28.8px;
     --fs-400:23px;
     --fs-300:32px;
     --fs-200:14px;
+    --fs-100:14px;
 }
 }
 @media  screen and (max-width:900px){
     :root{
     --fs-xl: 48px;
-    --fs-800:48px;
+    --fs-800:24px;
     --fs-600: 25px;
     --fs-400:18px;
     --fs-300:26px;
     --fs-200:12px;
+    --fs-100:12px;
 }
 }
 @media  screen and (max-width:800px){
     :root{
     --fs-xl: 40px;
-    --fs-800:32px;
+    --fs-800:20px;
     --fs-600: 20.8px;
     --fs-400:18px;
     --fs-300:22px;
     --fs-200:18px;
+    --fs-100:10px;
 }
 }
 @media  screen and (max-width:500px){
     :root{
     --fs-xl: 32px;
-    --fs-800:27.2px;
-    --fs-600: 16px;
+    --fs-800:14px;
+    --fs-600: 13px;
     --fs-400:16px;
     --fs-300:20px;
     --fs-200:14px;
+    --fs-100:8px;
 }
 }
 @media  screen and (max-width:400px){
     :root{
     --fs-xl: 28.8px;
-    --fs-800:16px;
+    --fs-800:10px;
     --fs-600: 9.6px;
     --fs-400:9.6px;
     --fs-300:16px;
     --fs-200:12px;
+    --fs-100:6px;
 }
 }
 /* loading */
@@ -131,7 +137,7 @@ background: linear-gradient(180deg, #FFFFFF 0%, #8BA9F4 100%);    display: flex;
     
 }
 .todayInfoLocation{
-    /* background-color: aqua; */ 
+    /* background-color: aqua;  */
     text-align: center;
     width:95%;
     height:20%;
@@ -139,8 +145,14 @@ background: linear-gradient(180deg, #FFFFFF 0%, #8BA9F4 100%);    display: flex;
     justify-content: center;
     align-items: center;
     font-size: var(--fs-600);
-
+    overflow: scroll;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
 }
+.todayInfoLocation::-webkit-scrollbar {
+  display: none;
+}
+
 .todayInfoweatherNData{
     /* background-color: aquamarine; */
     margin:5px;
@@ -156,12 +168,16 @@ background: linear-gradient(180deg, #FFFFFF 0%, #8BA9F4 100%);    display: flex;
     width:50%;
     height: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
+    flex-direction: column;
     font-size: var(--fs-xl);
 }
 .todayInfoTemp p{
     margin:0px;
+}
+.todayInfoTempFeels{
+    font-size: var(--fs-100);
 }
 .todayInfoOther{
     /* background-color: blueviolet; */
@@ -176,6 +192,7 @@ background: linear-gradient(180deg, #FFFFFF 0%, #8BA9F4 100%);    display: flex;
 .todayInfoOther p{
     margin:0px;
 }
+
 .todayInfoCondition{
     font-size: var(--fs-800);
     text-transform: uppercase;
@@ -194,11 +211,16 @@ background: linear-gradient(180deg, #FFFFFF 0%, #8BA9F4 100%);    display: flex;
     width:90%;
     height: auto;
     overflow:scroll;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
     display: flex;
     /* justify-content: center; */
     align-items: center;
     flex-direction: column;
+}
 
+.allWeekWeatherContainer::-webkit-scrollbar {
+  display: none;
 }
 .individualWeatherMain{
     background-color: white;

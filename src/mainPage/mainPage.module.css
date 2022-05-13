@@ -101,9 +101,9 @@
 .mainFrame{
 background: linear-gradient(180deg, #FFFFFF 0%, #8BA9F4 100%);    display: flex;
     flex-direction: column;
-    /* justify-content: center; */
+    justify-content: center;
     align-items: center;
-    padding-top:1rem;
+    /* padding-top:1rem; */
     /* height: 100%; */
 }
 /* today Display */

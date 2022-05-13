@@ -236,7 +236,13 @@ function MainPage({
     >
       {/*today main display with picture  */}
       {show && (
-        <div className={style.mainFrame}>
+        <div
+          className={style.mainFrame}
+          style={{
+            minHeight: `${heightDynamic}px`,
+            width: `${widthDynamic}px`,
+          }}
+        >
           <div className={style.todayDisplayContainer}>
             <div className={style.todayDisplayMain}>
               <img src={pictureHolder} alt="city selected" height="60px" />
@@ -296,8 +302,8 @@ function MainPage({
             <button
               onClick={() => {
                 returnToMainPage();
-                updateInput("")
-                updateFullWeatherRawData(null)
+                updateInput("");
+                updateFullWeatherRawData(null);
               }}
               className={style.buttonReturn}
             >

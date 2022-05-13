@@ -92,7 +92,7 @@ function App() {
   
    useEffect(() => {
      async function weatherData() {
-       const dataURL = `http://api.weatherapi.com/v1/forecast.json?key=${dataKey}&q=${userInputFinal}&days=4&aqi=no&alerts=no`;
+       const dataURL = `https://api.weatherapi.com/v1/forecast.json?key=${dataKey}&q=${userInputFinal}&days=4&aqi=no&alerts=no`;
 
        try {
          const response = await fetch(`${dataURL}`);

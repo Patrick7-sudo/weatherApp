@@ -1,3 +1,7 @@
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
 :root{
     --fs-xl: 1rem;
     --fs-800:1rem;
@@ -388,6 +392,9 @@ background: linear-gradient(180deg, #FFFFFF 0%, #8BA9F4 100%);    display: flex;
     transition: 1s;
     cursor: pointer;
 }
+.buttonReturn:focus{
+    outline:none;
+}
 
 .buttonReturn:hover{
     transition: 1s;
@@ -396,6 +403,7 @@ background: linear-gradient(180deg, #FFFFFF 0%, #8BA9F4 100%);    display: flex;
 .buttonReturn:active{
     transition: 0.2s;
     transform: translateY(3px);
+    outline:none;
 }
 
 

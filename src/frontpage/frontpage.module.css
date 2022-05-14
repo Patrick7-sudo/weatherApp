@@ -1,3 +1,6 @@
+* {
+    -webkit-tap-highlight-color: transparent;
+}
 .frontPage{
     display:flex;
     justify-content: center;
@@ -72,6 +75,10 @@ img{
     margin-bottom:1rem;
     cursor: pointer;
     transition: 1s;
+}
+
+.buttonUserInput:focus{
+    outline:none;
 }
 .buttonUserInput:hover{
     transition: 1s;
